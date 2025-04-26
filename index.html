@@ -4,154 +4,299 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
-
         <title>Noah McClung - Web developer</title>
+        <style>
+            /* Base styles */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #181818;
+                overflow-x: hidden;
+            }
+            
+            /* Navigation Bar */
+            .navbar {
+                font-size: 13px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.6);
+                padding: 15px 5%;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+                position: fixed;
+                width: 100%;
+                transition: all 0.3s ease;
+            }
+            
+            .navbar h1 {
+                color: white;
+            }
+            
+            .navbar nav ul {
+                list-style-type: none;
+                display: flex;
+                align-items: center;
+            }
+            
+            .navbar nav ul li {
+                margin: 0 15px;
+            }
+            
+            .navbar nav ul li a {
+                color: white;
+                text-decoration: none;
+                font-size: 1.1rem;
+                transition: color 0.3s ease;
+            }
+            
+            .navbar nav ul li a.active {
+                color: #00b7ff;
+            }
+            
+            .navbar nav ul li a:hover {
+                color: #00b7ff;
+            }
+            
+            .mobile-menu-btn {
+                display: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            
+            .contact-info {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                color: white;
+            }
+            
+            /* Hero Section */
+            .hero {
+                background-image: url('Images/hero.jpg');
+                background-size: cover;
+                background-position: center;
+                height: 100vh;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-left: 10%;
+            }
+            
+            .hero::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background:
+                    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                    radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.6) 100%);
+                background-blend-mode: multiply;
+                z-index: 1;
+            }
+            
+            .hero-content {
+                position: relative;
+                z-index: 3;
+            }
+            
+            .first-name {
+                font-size: 6rem;
+                color: white;
+                font-weight: 100;
+                line-height: 1;
+            }
+            
+            .last-name {
+                font-size: 6rem;
+                color: #00b7ff;
+                font-weight: 800;
+                line-height: 1.2;
+                margin-bottom: 10px;
+            }
+            
+            .title {
+                font-size: 2.5rem;
+                color: rgba(255, 255, 255, 0.7);
+                font-weight: 100;
+                letter-spacing: 5px;
+                margin-bottom: 30px;
+            }
+            
+            /* Social Media Icons */
+            .socials {
+                position: relative;
+                z-index: 3;
+            }
+            
+            .socials a {
+                color: white;
+                font-size: 2rem;
+                margin-right: 30px;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+            
+            .socials a:hover {
+                color: #00b7ff;
+            }
+            
+            /* Responsive Design */
+            @media screen and (max-width: 1024px) {
+                .first-name, .last-name {
+                    font-size: 5rem;
+                }
+                
+                .title {
+                    font-size: 2rem;
+                    letter-spacing: 4px;
+                }
+            }
+            
+            @media screen and (max-width: 768px) {
+                .navbar {
+                    padding: 10px 5%;
+                }
+                
+                .navbar nav {
+                    position: fixed;
+                    top: 0;
+                    left: -100%;
+                    height: 100vh;
+                    width: 80%;
+                    background-color: rgba(0, 0, 0, 0.9);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    transition: left 0.3s ease;
+                    z-index: 1001;
+                }
+                
+                .navbar nav.active {
+                    left: 0;
+                }
+                
+                .navbar nav ul {
+                    flex-direction: column;
+                }
+                
+                .navbar nav ul li {
+                    margin: 15px 0;
+                }
+                
+                .navbar nav ul li a {
+                    font-size: 1.3rem;
+                }
+                
+                .mobile-menu-btn {
+                    display: block;
+                    position: relative;
+                    z-index: 1002;
+                }
+                
+                .first-name, .last-name {
+                    font-size: 4rem;
+                }
+                
+                .title {
+                    font-size: 1.5rem;
+                    letter-spacing: 3px;
+                }
+                
+                .socials a {
+                    font-size: 1.5rem;
+                    margin-right: 20px;
+                }
+            }
+            
+            @media screen and (max-width: 480px) {
+                .navbar {
+                    padding: 10px 4%;
+                }
+                
+                .first-name, .last-name {
+                    font-size: 3rem;
+                }
+                
+                .title {
+                    font-size: 1.2rem;
+                    letter-spacing: 2px;
+                }
+                
+                .socials a {
+                    font-size: 1.5rem;
+                    margin-right: 15px;
+                }
+            }
+        </style>
     </head>
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        background-color: #181818;
-    }
-    .navbar {
-        font-size: 13px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #0000009d;
-        padding: 8px 35px;
-        box-shadow: 0 55px 50px rgba(0, 0, 0, 0.3);
-        z-index: 1000;
-        position: fixed;
-        width: 97.3%;
-    }
-    .navbar h1 {
-        color: white;
-    }
-    .navbar nav ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-    }
-    .navbar nav ul li {
-        margin-right: 30px;
-    }
-    .navbar nav ul li a {
-        color: white;
-        text-decoration: none;
-        font-size: 19px;
-        margin-right: 20px;
-    }
-    .navbar nav ul li a.active {
-        color: rgb(0, 183, 255);
-    }
-    .contact-info {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* spacing between icon and text */
-    color: white;
-    }
-    .hero{
-        background-image: url('Images/hero.jpg');
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-    }
-    .hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-        radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.6) 100%);
-    background-blend-mode: multiply;
-    z-index: 2;
-  }
-  .first-name{
-    font-size: 100px;
-    color: white;
-    position: absolute;
-    top: 30%;
-    left: 14.3%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-    font-weight: 100;
-  }
-    .last-name{
-        font-size: 100px;
-        color:  #00b7ff;
-        position: absolute;
-        top: 40%;
-        left: 20%;
-        transform: translate(-50%, -50%);
-        z-index: 3;
-        font-weight: 800;
-    }
-    .title{
-        font-size: 50px;
-        color: rgba(255, 255, 255, 0.555);
-        position: absolute;
-        top: 51.5%;
-        left: 20%;
-        transform: translate(-50%, -50%);
-        z-index: 3;
-        font-weight: 100;
-        letter-spacing: 9.5px;
-    }
-    .socials {
-        position: absolute;
-        top: 64%;
-        left: 15%;
-        transform: translate(-50%, -50%);
-        z-index: 3;
-    }
-    .socials a {
-        color: white;
-        font-size: 35px;
-        margin-right: 40px;
-        text-decoration: none;
-    }
-    .socials a:hover {
-        color: rgb(0, 183, 255);
-    }
-    .socials i {
-        transition: color 0.3s ease;
-    }   
-    .socials i:hover {
-        color: rgb(0, 183, 255);
-    }
+    <body>
+        <section class="navbar">
+            <div class="mobile-menu-btn" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="work.html">Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="contact-info">
+                <i class="fa-solid fa-user"></i>
+                <h1 class="number">N.M</h1>
+            </div>
+        </section>
+        
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="first-name">Noah</h1>
+                <h1 class="last-name">McClung</h1>
+                <h2 class="title">Web Developer</h2>
+                <div class="socials">
+                    <a href="https://www.github.com/1iph" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    <a href="contact.html" target="_blank"><i class="fa-brands fa-discord"></i></a>
+                    <a href="contact.html"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+        </section>
 
-</style>
-<body>
-    <section class="navbar">
-        <nav>
-            <ul>
-                <li><a href="#about" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="work.html">Work</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="contact-info">
-            <i class="fa-solid fa-user"></i>
-            <h1 class="number">N.M</h1>
-        </div>
-    </section>
-    <section class="hero">
-       <h1 class="first-name">Noah</h1>
-       <h1 class="last-name">McClung</h1>
-       <h2 class="title">Web Developer</h2>
-    </section>
-    <section class="socials">
-        <a href="https://www.github.com/1iph" target="_blank"><i class="fa-brands fa-github"></i></a>
-        <a href="contact.html" target="_blank"><i class="fa-brands fa-discord"></i></a>
-        <a href="contact.html"><i class="fa-solid fa-envelope"></i>
-    </section>
-</body>
-</html> 
+        <script>
+            // Mobile menu toggle functionality
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navMenu = document.getElementById('nav-menu');
+            
+            mobileMenu.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                if (navMenu.classList.contains('active')) {
+                    mobileMenu.innerHTML = '<i class="fas fa-times"></i>';
+                } else {
+                    mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+            
+            // Close mobile menu when a link is clicked
+            const navLinks = document.querySelectorAll('#nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
