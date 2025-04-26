@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+
+        <title>Noah McClung - Web developer</title>
+    </head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #181818;
+    }
+    .navbar {
+        font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #0000009d;
+        padding: 8px 35px;
+        box-shadow: 0 55px 50px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        position: fixed;
+        width: 97.3%;
+    }
+    .navbar h1 {
+        color: white;
+    }
+    .navbar nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+    .navbar nav ul li {
+        margin-right: 30px;
+    }
+    .navbar nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 19px;
+        margin-right: 20px;
+    }
+    .navbar nav ul li a.active {
+        color: rgb(0, 183, 255);
+    }
+    .contact-info {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* spacing between icon and text */
+    color: white;
+    }
+    .hero{
+        background-image: url('Images/hero.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+    }
+    .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+        radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.6) 100%);
+    background-blend-mode: multiply;
+    z-index: 2;
+  }
+  .first-name{
+    font-size: 100px;
+    color: white;
+    position: absolute;
+    top: 30%;
+    left: 14.3%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    font-weight: 100;
+  }
+    .last-name{
+        font-size: 100px;
+        color:  #00b7ff;
+        position: absolute;
+        top: 40%;
+        left: 20%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        font-weight: 800;
+    }
+    .title{
+        font-size: 50px;
+        color: rgba(255, 255, 255, 0.555);
+        position: absolute;
+        top: 51.5%;
+        left: 20%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        font-weight: 100;
+        letter-spacing: 9.5px;
+    }
+    .socials {
+        position: absolute;
+        top: 64%;
+        left: 15%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+    }
+    .socials a {
+        color: white;
+        font-size: 35px;
+        margin-right: 40px;
+        text-decoration: none;
+    }
+    .socials a:hover {
+        color: rgb(0, 183, 255);
+    }
+    .socials i {
+        transition: color 0.3s ease;
+    }   
+    .socials i:hover {
+        color: rgb(0, 183, 255);
+    }
+
+</style>
+<body>
+    <section class="navbar">
+        <nav>
+            <ul>
+                <li><a href="#about" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="work.html">Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="contact-info">
+            <i class="fa-solid fa-user"></i>
+            <h1 class="number">N.M</h1>
+        </div>
+    </section>
+    <section class="hero">
+       <h1 class="first-name">Noah</h1>
+       <h1 class="last-name">McClung</h1>
+       <h2 class="title">Web Developer</h2>
+    </section>
+    <section class="socials">
+        <a href="https://www.github.com/1iph" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="contact.html" target="_blank"><i class="fa-brands fa-discord"></i></a>
+        <a href="contact.html"><i class="fa-solid fa-envelope"></i>
+    </section>
+</body>
+</html> 

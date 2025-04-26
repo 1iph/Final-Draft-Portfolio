@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+        <title>Noah McClung - Web developer</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+            
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: 'Poppins', sans-serif;
+                background-color: #0e0e0e;
+                color: white;
+                overflow-x: hidden;
+            }
+            
+            .navbar {
+                font-size: 13px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #0000009d;
+                padding: 8px 35px;
+                box-shadow: 0 55px 50px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+                position: fixed;
+                width: 97.3%;
+                font-family: Arial, sans-serif;
+            }
+            
+            .navbar h1 {
+                color: white;
+                
+            }
+            
+            .navbar nav ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+            }
+            
+            .navbar nav ul li {
+                margin-right: 30px;
+            }
+            
+            .navbar nav ul li a {
+                color: white;
+                text-decoration: none;
+                font-size: 19px;
+                margin-right: 20px;
+                transition: color 0.3s ease;
+            }
+            
+            .navbar nav ul li a.active {
+                color: #00b7ff;
+            }
+            
+            .contact-info {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                color: white;
+            }
+            
+            .container {
+                display: flex;
+                min-height: 100vh;
+                padding-top: 60px;
+                position: relative;
+            }
+            
+            .about-container {
+                display: flex;
+                align-items: center;
+                width: 60%;
+                height: 100vh;
+                padding-left: 8%;
+            }
+            
+            .about {
+                position: relative;
+                max-width: 600px;
+                padding: 3rem;
+                background: rgba(255, 255, 255, 0.03);
+                border-radius: 20px;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+                border-left: 4px solid #00b7ff;
+                backdrop-filter: blur(10px);
+                z-index: 2;
+                overflow: hidden;
+            }
+            
+            .about::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(0, 183, 255, 0.1) 0%, transparent 70%);
+                z-index: -1;
+            }
+            
+            .about h1 {
+                font-size: 3.5rem;
+                font-weight: 700;
+                margin-bottom: 1.5rem;
+                color: white;
+                position: relative;
+                display: inline-block;
+            }
+            
+            .about h1::after {
+                content: '';
+                position: absolute;
+                width: 50%;
+                height: 5px;
+                background: linear-gradient(90deg, #00b7ff, transparent);
+                bottom: -10px;
+                left: 0;
+            }
+            
+            .highlight {
+                color: #00b7ff;
+                font-weight: 600;
+            }
+            
+            .about p {
+                font-size: 1.1rem;
+                line-height: 1.8;
+                color: #e0e0e0;
+                margin-bottom: 1.5rem;
+                position: relative;
+                z-index: 2;
+            }
+            
+            .glow-effect {
+                position: absolute;
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(0, 183, 255, 0.15) 0%, transparent 70%);
+                z-index: 1;
+                filter: blur(30px);
+                animation: float 8s infinite ease-in-out;
+            }
+            
+            .glow-1 {
+                top: -30px;
+                right: -30px;
+            }
+            
+            .glow-2 {
+                bottom: 40px;
+                left: -20px;
+                width: 100px;
+                height: 100px;
+                background: radial-gradient(circle, rgba(255, 100, 255, 0.1) 0%, transparent 70%);
+            }
+            
+            @keyframes float {
+                0%, 100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-20px);
+                }
+            }
+            
+            .tech-icon {
+                display: inline-block;
+                margin-right: 15px;
+                font-size: 1.5rem;
+                color: #00b7ff;
+                transform: translateY(5px);
+            }
+            
+            .skills-bar {
+                display: flex;
+                margin-top: 30px;
+                justify-content: start;
+                gap: 15px;
+            }
+            
+            .skill-pill {
+                padding: 8px 18px;
+                background: rgba(0, 183, 255, 0.1);
+                border: 1px solid rgba(0, 183, 255, 0.3);
+                border-radius: 50px;
+                font-size: 0.9rem;
+                transition: all 0.3s ease;
+            }
+            
+            .skill-pill:hover {
+                background: rgba(0, 183, 255, 0.2);
+                transform: translateY(-3px);
+            }
+            
+            .decorative-line {
+                position: absolute;
+                width: 2px;
+                height: 70%;
+                background: linear-gradient(180deg, #00b7ff, transparent);
+                left: 50px;
+                top: 15%;
+                opacity: 0.5;
+            }
+            
+            .empty-space {
+                width: 40%;
+                position: relative;
+            }
+            
+            @media (max-width: 1024px) {
+                .about-container {
+                    width: 80%;
+                    padding-left: 5%;
+                }
+                
+                .empty-space {
+                    width: 20%;
+                }
+                
+                .about h1 {
+                    font-size: 2.8rem;
+                }
+            }
+            
+            @media (max-width: 768px) {
+                .container {
+                    flex-direction: column;
+                }
+                
+                .about-container {
+                    width: 90%;
+                    padding: 5%;
+                    height: auto;
+                    margin: 70px auto;
+                }
+                
+                .about {
+                    padding: 2rem;
+                }
+                
+                .empty-space {
+                    display: none;
+                }
+                
+                .about h1 {
+                    font-size: 2.2rem;
+                }
+            }
+            .photo {
+                    position: absolute;
+                    top: 10%;
+                    right: 7%;
+                    width: 900px;  /* increase this */
+                    height: 900px; /* increase this */
+                    background-image: url('Images/DSCF2343-removebg-preview.png'); /* replace with your image path */
+                    background-size: cover; /* or contain, depending on the effect */
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    border-radius: 10px; 
+                    }
+            
+        </style>
+    </head>
+    <body>
+        <section class="navbar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="work.html">Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="contact-info">
+                <i class="fa-solid fa-user"></i>
+                <h1 class="number">N.M</h1>
+            </div>
+        </section>
+        
+        <div class="container">
+            <div class="about-container">
+                <section class="about">
+                    <div class="glow-effect glow-1"></div>
+                    <div class="glow-effect glow-2"></div>
+                    <div class="decorative-line"></div>
+                    
+                    <h1>About <span class="highlight">Me</span></h1>
+                    
+                    <p><i class="fa-solid fa-code tech-icon"></i>Hello! I'm <span class="highlight">Noah</span>, a passionate 15-year-old web developer based in Las Vegas. I've been working with HTML, CSS, JavaScript, and a bit of backend development for almost a year now.</p>
+                    
+                    <p><i class="fa-solid fa-laptop-code tech-icon"></i>I specialize in creating clean, modern, and responsive websites — perfect for personal portfolios, small businesses, blogs, or simple landing pages. Every project I take on gets my full attention because I truly love what I do!</p>
+                    
+                    <p><i class="fa-solid fa-lightbulb tech-icon"></i>Even though I'm young, I bring creativity, fresh ideas, and a strong work ethic to every project. I'm committed to delivering high-quality work on time and making sure you're 100% satisfied.</p>
+                    
+                    <div class="skills-bar">
+                        <div class="skill-pill">HTML5</div>
+                        <div class="skill-pill">CSS3</div>
+                        <div class="skill-pill">JavaScript</div>
+                        <div class="skill-pill">Front-end</div>
+                    </div>
+                    
+                </section>
+               
+            </div>
+            <div class="empty-space"></div>
+        </div>
+        
+        <div class="photo"></div>
+    </body>
+</html>

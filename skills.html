@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+        <title>Noah McClung - Web developer</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+            
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: 'Poppins', sans-serif;
+                background-color: #0e0e0e;
+                color: white;
+                overflow-x: hidden;
+            }
+            
+            .navbar {
+                font-size: 13px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #0000009d;
+                padding: 8px 35px;
+                box-shadow: 0 55px 50px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+                position: fixed;
+                width: 97.3%;
+                font-family: Arial, sans-serif;
+            }
+            
+            .navbar h1 {
+                color: white;
+                
+            }
+            
+            .navbar nav ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+            }
+            
+            .navbar nav ul li {
+                margin-right: 30px;
+            }
+            
+            .navbar nav ul li a {
+                color: white;
+                text-decoration: none;
+                font-size: 19px;
+                margin-right: 20px;
+                transition: color 0.3s ease;
+            }
+            
+            .navbar nav ul li a.active {
+                color: #00b7ff;
+            }
+            
+            .contact-info {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                color: white;
+            }
+            .container {
+                display: flex;
+                min-height: 100vh;
+                padding-top: 60px;
+                position: relative;
+            }
+            
+            .skills-container {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 100px 50px 50px 50px;
+            }
+            
+            .skills-header {
+                text-align: center;
+                margin-bottom: 50px;
+            }
+            
+            .skills-header h1 {
+                font-size: 3.5rem;
+                position: relative;
+                display: inline-block;
+                margin-bottom: 30px;
+            }
+            
+            .skills-header h1::after {
+                content: '';
+                position: absolute;
+                width: 50%;
+                height: 5px;
+                background: linear-gradient(90deg, #00b7ff, transparent);
+                bottom: -10px;
+                left: 25%;
+            }
+            
+            .skills-header p {
+                max-width: 700px;
+                font-size: 1.1rem;
+                line-height: 1.8;
+                color: #e0e0e0;
+                margin: 0 auto;
+            }
+            
+            .highlight {
+                color: #00b7ff;
+                font-weight: 600;
+            }
+            
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+                width: 80%;
+                max-width: 1200px;
+            }
+            
+            .skill-category {
+                padding: 2rem;
+                background: rgba(255, 255, 255, 0.03);
+                border-radius: 20px;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+                border-left: 4px solid #00b7ff;
+                backdrop-filter: blur(10px);
+                position: relative;
+                overflow: hidden;
+                transition: transform 0.3s ease;
+            }
+            
+            .skill-category:hover {
+                transform: translateY(-5px);
+            }
+            
+            .skill-category::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(0, 183, 255, 0.1) 0%, transparent 70%);
+                z-index: -1;
+            }
+            
+            .skill-category h2 {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+                color: white;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .skill-category h2 i {
+                color: #00b7ff;
+                font-size: 1.5rem;
+            }
+            
+            .skill-bar {
+                margin-bottom: 25px;
+            }
+            
+            .skill-info {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 8px;
+            }
+            
+            .skill-info span {
+                font-size: 1rem;
+            }
+            
+            .skill-progress {
+                height: 8px;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 10px;
+                overflow: hidden;
+                position: relative;
+            }
+            
+            .skill-progress .progress {
+                height: 100%;
+                background: linear-gradient(90deg, #00b7ff, #00ffff);
+                border-radius: 10px;
+                transition: width 1s ease;
+            }
+            
+            .glow-effect {
+                position: absolute;
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(0, 183, 255, 0.15) 0%, transparent 70%);
+                z-index: -1;
+                filter: blur(30px);
+            }
+            
+            .glow-1 {
+                top: -30px;
+                right: -30px;
+            }
+            
+            .glow-2 {
+                bottom: 40px;
+                left: -20px;
+                width: 100px;
+                height: 100px;
+                background: radial-gradient(circle, rgba(255, 100, 255, 0.1) 0%, transparent 70%);
+            }
+            
+            .tech-tools {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+                margin-top: 40px;
+            }
+            
+            .tech-tool {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 10px 20px;
+                background: rgba(0, 183, 255, 0.1);
+                border: 1px solid rgba(0, 183, 255, 0.3);
+                border-radius: 50px;
+                font-size: 0.9rem;
+                transition: all 0.3s ease;
+            }
+            
+            .tech-tool:hover {
+                background: rgba(0, 183, 255, 0.2);
+                transform: translateY(-3px);
+            }
+            
+            .tech-tool i {
+                color: #00b7ff;
+            }
+            
+            @media (max-width: 1024px) {
+                .skills-grid {
+                    grid-template-columns: 1fr;
+                    width: 90%;
+                }
+                
+                .skills-header h1 {
+                    font-size: 2.8rem;
+                }
+            }
+            
+            @media (max-width: 768px) {
+                .skills-container {
+                    padding: 100px 20px 50px 20px;
+                }
+                
+                .skills-header h1 {
+                    font-size: 2.2rem;
+                }
+            }
+           
+            
+        </style>
+    </head>
+    <body>
+        <section class="navbar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" >About</a></li>
+                    <li><a href="skills.html"class="active">Skills</a></li>
+                    <li><a href="work.html">Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="contact-info">
+                <i class="fa-solid fa-user"></i>
+                <h1 class="number">N.M</h1>
+            </div>
+        </section>
+        <div class="container">
+            <div class="skills-container">
+                <div class="skills-header">
+                    <h1>My <span class="highlight">Skills</span></h1>
+                    <p>With nearly a year of dedicated practice and continuous learning, I've developed proficiency in several web development technologies. Here's a breakdown of my technical skills and tools I work with.</p>
+                </div>
+                
+                <div class="skills-grid">
+                    <!-- Frontend Skills -->
+                    <div class="skill-category">
+                        <div class="glow-effect glow-1"></div>
+                        <h2><i class="fa-solid fa-code"></i>Frontend Development</h2>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>HTML5</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>CSS3</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>JavaScript</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Responsive Design</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Backend Skills -->
+                    <div class="skill-category">
+                        <div class="glow-effect glow-2"></div>
+                        <h2><i class="fa-solid fa-database"></i>Backend Development</h2>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Node.js Basics</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>API Integration</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 65%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Basic Database Concepts</span>
+                                <span>55%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 55%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>python</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 65%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Design Skills -->
+                    <div class="skill-category">
+                        <div class="glow-effect glow-1"></div>
+                        <h2><i class="fa-solid fa-palette"></i>Design & UI/UX</h2>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>UI Design Principles</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Color Theory</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Typography</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>User Experience</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Soft Skills -->
+                    <div class="skill-category">
+                        <div class="glow-effect glow-2"></div>
+                        <h2><i class="fa-solid fa-lightbulb"></i>Professional Skills</h2>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Problem Solving</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Time Management</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Attention to Detail</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Communication</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-tools">
+                    <div class="tech-tool">
+                        <i class="fa-brands fa-html5"></i>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="tech-tool">
+                        <i class="fa-brands fa-css3-alt"></i>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="tech-tool">
+                        <i class="fa-brands fa-js"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="tech-tool">
+                        <i class="fa-brands fa-node-js"></i>
+                        <span>Node.js</span>
+                    </div>
+                    <div class="tech-tool">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                        <span>Responsive Design</span>
+                    </div>
+                    <div class="tech-tool">
+                        <i class="fa-brands fa-git-alt"></i>
+                        <span>Git</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
