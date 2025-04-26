@@ -1,478 +1,329 @@
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
-        <title>Noah McClung - Web developer</title>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-            
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+    <title>Noah McClung - Web developer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0e0e0e;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation Bar */
+        .navbar {
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 8px 5%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            position: fixed;
+            width: 100%;
+            font-family: Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar h1 {
+            color: white;
+        }
+        
+        .navbar nav {
+            width: auto;
+        }
+        
+        .navbar nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        .navbar nav ul li {
+            margin-right: 30px;
+        }
+        
+        .navbar nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 19px;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar nav ul li a.active,
+        .navbar nav ul li a:hover {
+            color: #00b7ff;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1002;
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+        }
+        
+        /* Main Container */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            position: relative;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+        
+        .about-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .about {
+            position: relative;
+            width: 100%;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-left: 4px solid #00b7ff;
+            backdrop-filter: blur(10px);
+            z-index: 2;
+            overflow: hidden;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 183, 255, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .about h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about h1::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 5px;
+            background: linear-gradient(90deg, #00b7ff, transparent);
+            bottom: -10px;
+            left: 25%;
+        }
+        
+        .about p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight {
+            color: #00b7ff;
+            font-weight: 600;
+        }
+        
+        .glow-effect {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 183, 255, 0.15) 0%, transparent 70%);
+            z-index: 1;
+            filter: blur(30px);
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .glow-1 {
+            top: -30px;
+            right: -30px;
+        }
+        
+        .glow-2 {
+            bottom: 40px;
+            left: -20px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255, 100, 255, 0.1) 0%, transparent 70%);
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
             }
-            
-            body {
-                font-family: 'Poppins', sans-serif;
-                background-color: #0e0e0e;
-                color: white;
-                overflow-x: hidden;
+            50% {
+                transform: translateY(-20px);
             }
-            
-            /* Navigation Bar */
-            .navbar {
-                font-size: 13px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                background-color: rgba(0, 0, 0, 0.6);
-                padding: 8px 5%;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-                z-index: 1000;
-                position: fixed;
-                width: 100%;
-                font-family: Arial, sans-serif;
-                transition: all 0.3s ease;
-            }
-            
-            .navbar h1 {
-                color: white;
-            }
-            
-            .navbar nav {
-                width: auto;
-            }
-            
-            .navbar nav ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                display: flex;
-            }
-            
-            .navbar nav ul li {
-                margin-right: 30px;
-            }
-            
-            .navbar nav ul li a {
-                color: white;
-                text-decoration: none;
-                font-size: 19px;
-                transition: color 0.3s ease;
-            }
-            
-            .navbar nav ul li a.active {
-                color: #00b7ff;
-            }
-            
-            .navbar nav ul li a:hover {
-                color: #00b7ff;
-            }
-            
-            .mobile-menu-btn {
-                display: none;
-                color: white;
-                font-size: 1.5rem;
-                cursor: pointer;
-                z-index: 1002;
-            }
-            
-            .contact-info {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                color: white;
-            }
-            
-            /* Main Container */
-            .container {
-                display: flex;
-                min-height: 100vh;
-                padding-top: 80px;
-                position: relative;
-            }
-            
-            .about-container {
-                display: flex;
-                align-items: center;
-                width: 60%;
-                min-height: 90vh;
-                padding-left: 8%;
-                position: relative;
-                z-index: 2;
-            }
-            
+        }
+        
+        /* Skills */
+        .tech-icon {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 1.5rem;
+            color: #00b7ff;
+            transform: translateY(5px);
+        }
+        
+        .skills-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .skill-pill {
+            padding: 8px 18px;
+            background: rgba(0, 183, 255, 0.1);
+            border: 1px solid rgba(0, 183, 255, 0.3);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-pill:hover {
+            background: rgba(0, 183, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .empty-space {
+            display: none; /* hidden since it's no longer necessary for centering */
+        }
+        
+        .photo {
+            display: none; /* hidden unless you later need it */
+        }
+        
+        /* Responsive tweaks */
+        @media (max-width: 768px) {
             .about {
-                position: relative;
-                max-width: 600px;
-                padding: 3rem;
-                background: rgba(255, 255, 255, 0.03);
-                border-radius: 20px;
-                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-                border-left: 4px solid #00b7ff;
-                backdrop-filter: blur(10px);
-                z-index: 2;
-                overflow: hidden;
+                padding: 2rem;
             }
-            
-            .about::before {
-                content: '';
-                position: absolute;
-                top: -50%;
-                left: -50%;
-                width: 200%;
-                height: 200%;
-                background: radial-gradient(circle, rgba(0, 183, 255, 0.1) 0%, transparent 70%);
-                z-index: -1;
-            }
-            
             .about h1 {
-                font-size: 3.5rem;
-                font-weight: 700;
-                margin-bottom: 1.5rem;
-                color: white;
-                position: relative;
-                display: inline-block;
+                font-size: 2rem;
             }
-            
-            .about h1::after {
-                content: '';
-                position: absolute;
-                width: 50%;
-                height: 5px;
-                background: linear-gradient(90deg, #00b7ff, transparent);
-                bottom: -10px;
-                left: 0;
-            }
-            
-            .highlight {
-                color: #00b7ff;
-                font-weight: 600;
-            }
-            
             .about p {
-                font-size: 1.1rem;
-                line-height: 1.8;
-                color: #e0e0e0;
-                margin-bottom: 1.5rem;
-                position: relative;
-                z-index: 2;
+                font-size: 0.95rem;
             }
-            
-            /* Glowing Effects */
-            .glow-effect {
-                position: absolute;
-                width: 150px;
-                height: 150px;
-                border-radius: 50%;
-                background: radial-gradient(circle, rgba(0, 183, 255, 0.15) 0%, transparent 70%);
-                z-index: 1;
-                filter: blur(30px);
-                animation: float 8s infinite ease-in-out;
+        }
+        
+        @media (max-width: 480px) {
+            .about h1 {
+                font-size: 1.8rem;
             }
-            
-            .glow-1 {
-                top: -30px;
-                right: -30px;
-            }
-            
-            .glow-2 {
-                bottom: 40px;
-                left: -20px;
-                width: 100px;
-                height: 100px;
-                background: radial-gradient(circle, rgba(255, 100, 255, 0.1) 0%, transparent 70%);
-            }
-            
-            @keyframes float {
-                0%, 100% {
-                    transform: translateY(0);
-                }
-                50% {
-                    transform: translateY(-20px);
-                }
-            }
-            
-            /* Tech Icons & Skills */
-            .tech-icon {
-                display: inline-block;
-                margin-right: 15px;
-                font-size: 1.5rem;
-                color: #00b7ff;
-                transform: translateY(5px);
-            }
-            
-            .skills-bar {
-                display: flex;
-                margin-top: 30px;
-                flex-wrap: wrap;
-                gap: 15px;
-            }
-            
-            .skill-pill {
-                padding: 8px 18px;
-                background: rgba(0, 183, 255, 0.1);
-                border: 1px solid rgba(0, 183, 255, 0.3);
-                border-radius: 50px;
+            .about p {
                 font-size: 0.9rem;
-                transition: all 0.3s ease;
             }
-            
-            .skill-pill:hover {
-                background: rgba(0, 183, 255, 0.2);
-                transform: translateY(-3px);
-            }
-            
-            .decorative-line {
-                position: absolute;
-                width: 2px;
-                height: 70%;
-                background: linear-gradient(180deg, #00b7ff, transparent);
-                left: 50px;
-                top: 15%;
-                opacity: 0.5;
-            }
-            
-            .empty-space {
-                width: 40%;
-                position: relative;
-            }
-            
-            /* Profile Photo */
-            .photo {
-                position: absolute;
-                top: 10%;
-                right: 7%;
-                width: 40%;
-                height: 80%;
-                max-width: 600px;
-                background-image: url('Images/IMG_9556-removebg-preview.png');
-                background-size: contain;
-                background-position: center;
-                background-repeat: no-repeat;
-                z-index: 1;
-            }
-            
-            /* Responsive Design */
-            @media (max-width: 1200px) {
-                .about-container {
-                    width: 55%;
-                }
-                
-                .about h1 {
-                    font-size: 3rem;
-                }
-                
-                .photo {
-                    width: 45%;
-                }
-            }
-            
-            @media (max-width: 1024px) {
-                .about-container {
-                    width: 60%;
-                    padding-left: 5%;
-                }
-                
-                .empty-space {
-                    width: 40%;
-                }
-                
-                .about h1 {
-                    font-size: 2.8rem;
-                }
-                
-                .photo {
-                    width: 40%;
-                    right: 5%;
-                }
-            }
-            
-            @media (max-width: 900px) {
-                .container {
-                    flex-direction: column;
-                }
-                
-                .about-container {
-                    width: 90%;
-                    padding: 5%;
-                    min-height: auto;
-                    margin: 0 auto 50px;
-                }
-                
-                .empty-space {
-                    display: none;
-                }
-                
-                .photo {
-                    position: relative;
-                    width: 80%;
-                    height: 400px;
-                    margin: 0 auto;
-                    top: auto;
-                    right: auto;
-                    order: -1;
-                }
-            }
-            
-            @media (max-width: 768px) {
-                .navbar {
-                    padding: 10px 5%;
-                }
-                
-                .mobile-menu-btn {
-                    display: block;
-                }
-                
-                .navbar nav {
-                    position: fixed;
-                    top: 0;
-                    left: -100%;
-                    height: 100vh;
-                    width: 80%;
-                    background-color: rgba(0, 0, 0, 0.9);
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    transition: left 0.3s ease;
-                    z-index: 1001;
-                }
-                
-                .navbar nav.active {
-                    left: 0;
-                }
-                
-                .navbar nav ul {
-                    flex-direction: column;
-                    align-items: center;
-                }
-                
-                .navbar nav ul li {
-                    margin: 15px 0;
-                }
-                
-                .navbar nav ul li a {
-                    font-size: 1.3rem;
-                    margin-right: 0;
-                }
-                
-                .about {
-                    padding: 2rem;
-                }
-                
-                .about h1 {
-                    font-size: 2.2rem;
-                }
-                
-                .photo {
-                    height: 350px;
-                }
-            }
-            
-            @media (max-width: 480px) {
-                .about {
-                    padding: 1.5rem;
-                }
-                
-                .about h1 {
-                    font-size: 2rem;
-                }
-                
-                .about p {
-                    font-size: 1rem;
-                }
-                
-                .tech-icon {
-                    font-size: 1.2rem;
-                }
-                
-                .skills-bar {
-                    justify-content: center;
-                }
-                
-                .photo {
-                    height: 300px;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <section class="navbar">
-            <div class="mobile-menu-btn" id="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
-            <nav id="nav-menu">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html" class="active">About</a></li>
-                    <li><a href="skills.html">Skills</a></li>
-                    <li><a href="work.html">Work</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="contact-info">
-                <i class="fa-solid fa-user"></i>
-                <h1 class="number">N.M</h1>
-            </div>
-        </section>
-        
-        <div class="container">
-            <div class="about-container">
-                <section class="about">
-                    <div class="glow-effect glow-1"></div>
-                    <div class="glow-effect glow-2"></div>
-                    <div class="decorative-line"></div>
-                    
-                    <h1>About <span class="highlight">Me</span></h1>
-                    
-                    <p><i class="fa-solid fa-code tech-icon"></i>Hello! I'm <span class="highlight">Noah</span>, a passionate 15-year-old web developer based in Las Vegas. I've been working with HTML, CSS, JavaScript, and a bit of backend development for almost a year now.</p>
-                    
-                    <p><i class="fa-solid fa-laptop-code tech-icon"></i>I specialize in creating clean, modern, and responsive websites — perfect for personal portfolios, small businesses, blogs, or simple landing pages. Every project I take on gets my full attention because I truly love what I do!</p>
-                    
-                    <p><i class="fa-solid fa-lightbulb tech-icon"></i>Even though I'm young, I bring creativity, fresh ideas, and a strong work ethic to every project. I'm committed to delivering high-quality work on time and making sure you're 100% satisfied.</p>
-                    
-                    <div class="skills-bar">
-                        <div class="skill-pill">HTML5</div>
-                        <div class="skill-pill">CSS3</div>
-                        <div class="skill-pill">JavaScript</div>
-                        <div class="skill-pill">Front-end</div>
-                    </div>
-                    
-                </section>
-            </div>
-            <div class="empty-space"></div>
+        }
+    </style>
+</head>
+<body>
+    <section class="navbar">
+        <div class="mobile-menu-btn" id="mobile-menu">
+            <i class="fas fa-bars"></i>
         </div>
-        
-        <div class="photo"></div>
-        
-        <script>
-            // Mobile menu toggle functionality
-            const mobileMenu = document.getElementById('mobile-menu');
-            const navMenu = document.getElementById('nav-menu');
-            
-            mobileMenu.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="work.html">Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="contact-info">
+            <i class="fa-solid fa-user"></i>
+            <h1 class="number">N.M</h1>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="about-container">
+            <section class="about">
+                <div class="glow-effect glow-1"></div>
+                <div class="glow-effect glow-2"></div>
+
+                <h1>About <span class="highlight">Me</span></h1>
+
+                <p><i class="fa-solid fa-code tech-icon"></i>Hello! I'm <span class="highlight">Noah</span>, a passionate 15-year-old web developer based in Las Vegas. I've been working with HTML, CSS, JavaScript, and a bit of backend development for almost a year now.</p>
+
+                <p><i class="fa-solid fa-laptop-code tech-icon"></i>I specialize in creating clean, modern, and responsive websites — perfect for personal portfolios, small businesses, blogs, or simple landing pages. Every project I take on gets my full attention because I truly love what I do!</p>
+
+                <p><i class="fa-solid fa-lightbulb tech-icon"></i>Even though I'm young, I bring creativity, fresh ideas, and a strong work ethic to every project. I'm committed to delivering high-quality work on time and making sure you're 100% satisfied.</p>
+
+                <div class="skills-bar">
+                    <div class="skill-pill">HTML5</div>
+                    <div class="skill-pill">CSS3</div>
+                    <div class="skill-pill">JavaScript</div>
+                    <div class="skill-pill">Front-end</div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            if (navMenu.classList.contains('active')) {
+                mobileMenu.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+
+        const navLinks = document.querySelectorAll('#nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
                 if (navMenu.classList.contains('active')) {
-                    mobileMenu.innerHTML = '<i class="fas fa-times"></i>';
-                } else {
+                    navMenu.classList.remove('active');
                     mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
                 }
             });
-            
-            // Close mobile menu when a link is clicked
-            const navLinks = document.querySelectorAll('#nav-menu a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (navMenu.classList.contains('active')) {
-                        navMenu.classList.remove('active');
-                        mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                });
-            });
-        </script>
-    </body>
+        });
+    </script>
+</body>
 </html>
