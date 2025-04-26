@@ -17,7 +17,7 @@
             body {
                 font-family: Arial, sans-serif;
                 background-color: #0e0e0e;
-            color: white;
+                color: white;
                 overflow-x: hidden;
             }
         
@@ -90,6 +90,8 @@
             position: relative;
             flex-wrap: wrap;
             flex-direction: column;
+            /* Add padding-top to push content below navbar */
+            padding-top: 80px; 
         }
         
         .about-container {
@@ -231,8 +233,54 @@
             display: none; /* hidden unless you later need it */
         }
         
+        /* Mobile Navigation Styles - Added from index.html */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                padding: 10px 5%;
+            }
+            
+            .navbar nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                height: 100vh;
+                width: 80%;
+                background-color: rgba(0, 0, 0, 0.9);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.3s ease;
+                z-index: 1001;
+            }
+            
+            .navbar nav.active {
+                left: 0;
+            }
+            
+            .navbar nav ul {
+                flex-direction: column;
+            }
+            
+            .navbar nav ul li {
+                margin: 15px 0;
+            }
+            
+            .navbar nav ul li a {
+                font-size: 1.3rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
         /* Responsive tweaks */
         @media (max-width: 768px) {
+            .container {
+                padding-top: 70px; /* Slightly less padding on mobile */
+            }
+            
             .about {
                 padding: 2rem;
             }
@@ -245,6 +293,10 @@
         }
         
         @media (max-width: 480px) {
+            .navbar {
+                padding: 10px 4%;
+            }
+            
             .about h1 {
                 font-size: 1.8rem;
             }
@@ -252,6 +304,16 @@
                 font-size: 0.9rem;
             }
         }
+        @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
     </style>
 </head>
 <body>
@@ -300,9 +362,10 @@
     </div>
 
     <script>
+        // Mobile menu toggle functionality
         const mobileMenu = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
-
+        
         mobileMenu.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             if (navMenu.classList.contains('active')) {
@@ -311,7 +374,8 @@
                 mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
             }
         });
-
+        
+        // Close mobile menu when a link is clicked
         const navLinks = document.querySelectorAll('#nav-menu a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {

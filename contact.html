@@ -371,7 +371,7 @@
             @media (max-width: 768px) {
                 .navbar {
                     padding: 8px 4%;
-                    width: 92%;
+                    width: 100%;
                 }
                 
                 .menu-toggle {
@@ -407,6 +407,16 @@
                 
                 .navbar nav ul li a {
                     font-size: 24px;
+                }
+            }
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
                 }
             }
         </style>
